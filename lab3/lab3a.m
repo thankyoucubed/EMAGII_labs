@@ -2,7 +2,7 @@
 
 c = 2.99792458*10^8;% speed of light
 I0 = 1;             % current amplitude
-f = 2.4*10^6;           % frequency
+f = 2.4*10^9;       % frequency of both a microwave oven and wifi
 lambda = c/f;       % wavelength
 k = (2*pi)/lambda;  % wave #
 L = 1.25*lambda;    % length of antenna
@@ -10,6 +10,7 @@ N = 100;            % # of data points
 z = linspace(-L/2,L/2,N);
 
 % piecewise equation for current phasor I~(z)
+
 %{
 for i = 1:N
     if z(i) < 0
@@ -21,6 +22,8 @@ for i = 1:N
     end
 end
 %}
+
+% the above code works, but is bulky. use below instead:
 I = I0.*sin(k.*(L/2-abs(z)));
 
 plot(z,I)
